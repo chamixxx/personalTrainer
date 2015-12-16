@@ -46,12 +46,12 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
 	
 	<servlet>
 	<servlet-name>QueueDatastore</servlet-name>
-		<servlet-class>root.AddQueueDatastore</servlet-class>
+		<servlet-class>root.TaskQueueDatastore</servlet-class>
 	</servlet>
 	
 	<servlet-mapping>
 		<servlet-name>QueueDatastore</servlet-name>
-		<url-pattern>/addQueueDatastore</url-pattern>
+		<url-pattern>/taskQueueDatastore</url-pattern>
 	</servlet-mapping>
 	
 	<servlet>
@@ -72,6 +72,16 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
 	<servlet-mapping>
 		<servlet-name>GetSearchResult</servlet-name>
 		<url-pattern>/getSearchResults</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+	<servlet-name>GetRSSServelet</servlet-name>
+		<servlet-class>root.GetRSSServelet</servlet-class>
+	</servlet>
+	
+	<servlet-mapping>
+		<servlet-name>GetRSSServelet</servlet-name>
+		<url-pattern>/getRSS</url-pattern>
 	</servlet-mapping>
   
 </web-app>

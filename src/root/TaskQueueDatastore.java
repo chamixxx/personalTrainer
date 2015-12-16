@@ -24,7 +24,7 @@ import com.google.appengine.api.datastore.Query.FilterOperator;
 
 
 
-public class AddQueueDatastore extends HttpServlet {
+public class TaskQueueDatastore extends HttpServlet {
 
 	public void doGet(HttpServletRequest request, HttpServletResponse resp)
 			throws IOException {

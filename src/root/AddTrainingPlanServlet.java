@@ -53,7 +53,7 @@ public class AddTrainingPlanServlet extends HttpServlet {
 	    String exercices = (req.get("exercices")).toString();
 	    
 	    Queue queue = QueueFactory.getDefaultQueue();
-	    TaskOptions task = TaskOptions.Builder.withUrl("/addQueueDatastore").param("title",(String) req.get("title"))
+	    TaskOptions task = TaskOptions.Builder.withUrl("/taskQueueDatastore").param("title",(String) req.get("title"))
 	    															.param("description",(String) req.get("description"))
 	    															.param("domain", (String) req.get("domain"))
 	    															.param("minute", req.get("minute").toString())

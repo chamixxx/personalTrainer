@@ -72,8 +72,7 @@
           <li ng-repeat="feed in feeds | filter:filterText" style="margin-left:30px">                    
                     <h5><a href="{{feed.link}}">{{feed.title}}</a></h5>  
                     <div style="margin-left:30px">                                      
-                      <p class="text-left">{{feed.contentSnippet}}</p>                    
-                      <span class="small">{{feed.publishedDate}}</span>
+                      <span class="small">{{feed.pubDate}}</span>
                     </div>
           </li>                
       </div>
@@ -99,7 +98,6 @@
 
     <script src="js/app/trainerApp.js"></script>
     <script src="js/services/comService.js"></script>
-    <script src="js/services/rssService.js"></script>
 
     <script src="js/ctrls/loginCrtl.js"></script>
     <script src="js/ctrls/resultsCtrl.js"></script>

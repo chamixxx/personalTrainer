@@ -9,7 +9,8 @@ function commFnc($log, $http, $q) {
 		getUserInfo:getUserInfo,
 		postTrainingPlan:postTrainingPlan,
 		getTrainings:getTrainings,
-		getSearchResults:getSearchResults
+		getSearchResults:getSearchResults,
+		getRSS:getRSS
 	};
 
 	function getMessage() { 
@@ -99,6 +100,18 @@ function commFnc($log, $http, $q) {
 
 		var deferred = $q.defer();
 		$http(req).
+			success(function(data, status, headers, config) {
+			 	deferred.resolve(data)
+			}).
+			error(function(data, status, headers, config) {
+				deferred.reject(status);
+			});
+        return deferred.promise;
+	};
+
+	function getRSS() { 
+		var deferred = $q.defer();
+		$http.get('/getRSS').
 			success(function(data, status, headers, config) {
 			 	deferred.resolve(data)
 			}).
