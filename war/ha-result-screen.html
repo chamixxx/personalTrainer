@@ -69,9 +69,13 @@
       
       <div class=" col-md-12 col-sm-12 col-xs-12 " style="margin-bottom:40px">
           <h3>News</h3>
-          <p>From the Kastor Kitchen: Farm Fresh Facial [http://www.runnersworld.com/recipes/from-the-kastor-kitchen-farm-fresh-facial] Use leftover egg yolk to clear up</p>
-          
-          <p>From the Kastor Kitchen: Farm Fresh Facial [http://www.runnersworld.com/recipes/from-the-kastor-kitchen-farm-fresh-facial] Use leftover egg yolk to clear up</p>
+          <li ng-repeat="feed in feeds | filter:filterText" style="margin-left:30px">                    
+                    <h5><a href="{{feed.link}}">{{feed.title}}</a></h5>  
+                    <div style="margin-left:30px">                                      
+                      <p class="text-left">{{feed.contentSnippet}}</p>                    
+                      <span class="small">{{feed.publishedDate}}</span>
+                    </div>
+          </li>                
       </div>
       
       
@@ -94,7 +98,9 @@
     <script src="lib/angular-cookies.js"></script>
 
     <script src="js/app/trainerApp.js"></script>
-     <script src="js/services/comService.js"></script>
+    <script src="js/services/comService.js"></script>
+    <script src="js/services/rssService.js"></script>
+
     <script src="js/ctrls/loginCrtl.js"></script>
     <script src="js/ctrls/resultsCtrl.js"></script>
     <script src="https://apis.google.com/js/platform.js" async defer></script>
