@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xmlns="http://java.sun.com/xml/ns/javaee"
+xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
+xsi:schemaLocation="http://java.sun.com/xml/ns/javaee
+http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
+
+<servlet>
+		<servlet-name>labelWelcome</servlet-name>
+		<servlet-class>root.AddWelcomeServlet</servlet-class>
+	</servlet>
+	
+	<servlet-mapping>
+		<servlet-name>labelWelcome</servlet-name>
+		<url-pattern>/addWelcome</url-pattern>
+	</servlet-mapping>
+	<servlet>
+	<servlet-name>MessageWelcome</servlet-name>
+		<servlet-class>root.LoadWelcomeMessageServlet</servlet-class>
+	</servlet>
+	
+	<servlet-mapping>
+		<servlet-name>MessageWelcome</servlet-name>
+		<url-pattern>/loadWelcome</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+	<servlet-name>GoogleAuth</servlet-name>
+		<servlet-class>root.GoogleAuthenticationServlet</servlet-class>
+	</servlet>
+	
+	<servlet-mapping>
+		<servlet-name>GoogleAuth</servlet-name>
+		<url-pattern>/googleAuth</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+	<servlet-name>AddTraining</servlet-name>
+		<servlet-class>root.AddTrainingPlanServlet</servlet-class>
+	</servlet>
+	
+	<servlet-mapping>
+		<servlet-name>AddTraining</servlet-name>
+		<url-pattern>/addTraining</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+	<servlet-name>QueueDatastore</servlet-name>
+		<servlet-class>root.AddQueueDatastore</servlet-class>
+	</servlet>
+	
+	<servlet-mapping>
+		<servlet-name>QueueDatastore</servlet-name>
+		<url-pattern>/addQueueDatastore</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+	<servlet-name>GetTrainings</servlet-name>
+		<servlet-class>root.GetTrainingsServlet</servlet-class>
+	</servlet>
+	
+	<servlet-mapping>
+		<servlet-name>GetTrainings</servlet-name>
+		<url-pattern>/getTrainings</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+	<servlet-name>GetSearchResult</servlet-name>
+		<servlet-class>root.GetResultsByKeyWord</servlet-class>
+	</servlet>
+	
+	<servlet-mapping>
+		<servlet-name>GetSearchResult</servlet-name>
+		<url-pattern>/getSearchResults</url-pattern>
+	</servlet-mapping>
+  
+</web-app>
