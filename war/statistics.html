@@ -58,7 +58,7 @@
                     <td><b>COMPLETED</b></td>
                 </tr>
 
-                <tr ng-repeat="exo in stats">
+                <tr ng-repeat="exo in stats | orderBy:'traingPlanName'">
                     <td>{{exo.traingPlanName | uppercase}}</td>
                     <td>{{exo.currentDate}}</td>
                     <td>{{exo.exoName}}</td>
