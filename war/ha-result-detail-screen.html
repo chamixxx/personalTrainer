@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="trainerApp" ng-controller="detailsCtrl">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="google-signin-client_id" content="787433281420-16ol1h0areuh13j2egd0339ejrltoaq3.apps.googleusercontent.com">
+    <title>Result screen detail</title>
+
+    <!-- Bootstrap -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+      <link href="lib/select2-3.5.1/select2.css" rel="stylesheet">
+      
+    <link href="css/js.css" rel="stylesheet">
+      
+
+  </head>
+  <body>
+      
+      <!-- ------------------------------------------- HEADER ZONE ------------------------------------------- -->
+      <nav class="navbar navbar-inverse" role="navigation">
+        <div class=" col-md-10 col-sm-10 col-xs-10 ">
+            <form class="navbar-form navbar-left"  style="width:100%" role="search">
+                 <button type="submit" class="btn btn-link " style="margin:0px,padding:0px" ng-click="back()"><span class="glyphicon glyphicon-arrow-left "></span> </button>
+                 <label> <h5 style="color:white"> Search</h5></label>
+          </form>
+        </div>
+          
+        <div class=" col-md-2 col-sm-2 col-xs-2 " ng-controller="loginCtrl">
+        
+        <button type="button" class="btn btn-default" aria-label="Left Align" ng-click="openStats()">
+                        <span class="glyphicon glyphicon-stats" aria-hidden="true"></span>
+                      </button>
+            <form class="navbar-form navbar-left"  style="width:100%" role="search" >
+               <div ng-hide="isSignedIn">
+                  <button type="submit" class="g-signin2" data-onsuccess="onSignIn">G</button>
+                  <!-- <button type="submit" class="btn btn-success">Y</button>
+                  <button type="submit" class="btn btn-warning">O</button> -->
+                </div>
+                <div ng-show="isSignedIn" style="color:white">
+                  <p>{{userName}}  <a href="" ng-click="signOut()">(signOut)</a></p>
+                  <p>{{email}}</p>
+                </div>
+          </form>
+        </div>
+      </nav>
+      <!-- ------------------------------------------- HEADER ZONE END ------------------------------------------- -->
+      
+      
+     <form>     
+            <div class=" col-md-1 col-sm-0 col-xs-0 " ></div>     
+        <div class=" col-md-11 col-sm-12 col-xs-12 " >
+        <h1>{{details.title}} </h1>
+        <h1 ng-hide="isPartial">(partial)</h1>
+                <table class="table table-striped table-condensed">
+                    <tr ng-repeat="exo in exercices">
+                        <td class=" col-md-12 col-sm-12 col-xs-12">
+                        <div class="row">
+                            <div class=" col-md-3 col-sm-12 col-xs-12 ">
+                                <h3>{{exo.title | uppercase}}</h3>
+                            </div>
+                            <div class=" col-md-1 col-sm-2 col-xs-2 ">
+                                <p id="totalTimeValue" style="margin-top:25px"><span class="glyphicon glyphicon-time"></span> {{exo.duree}}</p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class=" col-md-1 col-sm-0 col-xs-0 " ></div>
+                            <div class=" col-md-6 col-sm-12 col-xs-12 ">
+                                <p>{{exo.description}}</p>
+                            </div>
+                                <div class=" col-md-3 col-sm-12 col-xs-12 ">
+                                <div class=" col-md-12 col-sm-12 col-xs-12 ">
+                                    <h3><timer autostart="false" countdown="exo.duree*60" interval="1000">{{minutes}}:{{seconds}}</timer></h3>
+                                </div>
+                                <div class=" col-md-12 col-sm-12 col-xs-12 centered">
+                                    <div class="btn-group">
+                                        <button type="button" class="btn btn-default " ng-click="play($index)"><span class="glyphicon glyphicon-play"></span> </button>
+                                        <button type="button" class="btn btn-default " ng-click="pause($index)" > <span class="glyphicon glyphicon-pause"></span> </button>
+                                     
+                                    </div>
+                                    <button type="button" class="btn btn-default " ng-click="reset($index)"> <span class="glyphicon glyphicon-repeat"></span> </button>
+                                </div>
+                                
+                            </div>
+                        </div>
+                            <div class=" col-md-2 ol-sm-5 col-xs-12 text-center" >
+                                <button type="submit" class="btn btn-success btn-lg" ng-disabled="finishedPrevious[$index]" ng-click="validateExo($index)"> <span class="glyphicon glyphicon-ok"></span> </button>    
+                                <button type="submit" class="btn btn-danger btn-sm" ng-disabled="finishedPrevious[$index]" ng-click="unvalidateExo($index)"> <span class="glyphicon glyphicon-fast-forward"></span> </button>
+                            </div>
+                            
+                        </td>
+                    </tr>  
+                </table>
+             </div>
+            
+    <!-- <div class=" col-md-2 ol-sm-0 col-xs-0 " ></div> -->
+    <div class=" col-md-10 ol-sm-5 col-xs-0 " ></div> 
+</form>
+   
+      
+      
+      <!-- ------------------------------------------- FOOTER ZONE ------------------------------------------- -->
+     <!-- <nav class="navbar navbar-inverse navbar-fixed-bottom" role="navigation">
+        <div class=" col-md-10 col-sm-10 col-xs-10 ">
+            <form class="navbar-form navbar-left"  style="width:100%" role="search">
+                <button type="submit" class="btn btn-danger"> <span class="glyphicon glyphicon-plus-sign"></span> </button>
+               <label style="color:white">Add a Training Plan</label>
+          </form>
+        </div>
+      </nav>-->
+      <!-- ------------------------------------------- FOOTER ZONE END ------------------------------------------- -->
+    
+     <script src="lib/jquery-1.11.3.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+     <script src="lib/bootstrap.min.js"></script>
+    <script src="lib/angular.min.js"></script>
+
+    <script src="bower_components/angular-timer/dist/angular-timer.js"></script>
+    <script src="bower_components/momentjs/min/moment.min.js"></script>
+    <script src="bower_components/momentjs/min/locales.min.js"></script>
+    <script src="bower_components/humanize-duration/humanize-duration.js"></script>
+
+    <script src="lib/angular-cookies.js"></script>
+
+    <script src="js/app/trainerApp.js"></script>
+    <script src="js/services/comService.js"></script>
+
+    <script src="js/ctrls/loginCrtl.js"></script>
+    <script src="js/ctrls/resultsCtrl.js"></script>
+    <script src="js/ctrls/detailsCtrl.js"></script>
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
+
+
+    <script src="lib/select2-3.5.1/select2.min.js"></script>
+    
+   
+   
+             
+  </body>
+</html>

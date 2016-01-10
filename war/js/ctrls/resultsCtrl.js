@@ -46,9 +46,23 @@ function resultsCtrlFnt($scope, $log, $window, $cookies, comm) {
 	 		$log.info('list',$scope.resultsSearch);
 	 	},
 	 	function(errorPayload){
-	 		$log.info('errorPayload',errorPayload)				
+	 		$log.info('errorPayloadSearch',errorPayload)				
 	 	}
 	);	
     };
+
+    $scope.goToDetailsTrainings = function(name) {
+    	$cookies.put('detailsName', name);
+    	$cookies.put('type', "TrainingPlan");
+    	$cookies.put('parentKey',"-1");
+    	$window.location.assign("/ha-result-detail-screen.html");
+    } 
+
+    $scope.goToDetailsExercices = function(name,parentKey) {
+    	$cookies.put('detailsName', name);
+    	$cookies.put('type', "Exercices");
+    	$cookies.put('parentKey',parentKey);
+    	$window.location.assign("/ha-result-detail-screen.html");
+    }
 
 }

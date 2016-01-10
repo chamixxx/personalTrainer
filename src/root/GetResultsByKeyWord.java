@@ -14,6 +14,7 @@ import org.json.simple.JSONObject;
 import com.google.appengine.api.datastore.DatastoreService;
 import com.google.appengine.api.datastore.DatastoreServiceFactory;
 import com.google.appengine.api.datastore.Entity;
+import com.google.appengine.api.datastore.KeyFactory;
 import com.google.appengine.api.datastore.PreparedQuery;
 import com.google.appengine.api.datastore.Query;
 import com.google.appengine.api.datastore.Query.Filter;
@@ -55,12 +56,12 @@ public class GetResultsByKeyWord extends HttpServlet {
 					if(TitreContientKeyWords(keyWordsArray,TitleExo))
 					{
 						JSONObject exercice = new JSONObject();
+						exercice.put("keyParent", KeyFactory.keyToString(resultExo.getParent()));
 						exercice.put("title", resultExo.getProperty("title"));
 						exercice.put("minute", resultExo.getProperty("duree"));
 						exercices.add(exercice);
 					}	
 				}
-		
 		results.put("trainings", trainings);
 		results.put("exercices", exercices);
 				

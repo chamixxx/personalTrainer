@@ -25,5 +25,12 @@ function searchCtrlFnt($scope, $log, $window, $cookies, comm) {
     	$cookies.put('keyWord', $scope.keyWord);
     	$window.location.assign("/ha-result-screen.html");
     };
+
+    $scope.goToDetailsTrainings = function(name) {
+    	$cookies.put('detailsName', name);
+    	$cookies.put('type', "TrainingPlan");
+    	$cookies.put('parentKey',"-1");
+    	$window.location.assign("/ha-result-detail-screen.html");
+    } 
 }
 

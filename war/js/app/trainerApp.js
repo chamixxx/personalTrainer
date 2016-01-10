@@ -1,1 +1,1 @@
-angular.module('trainerApp',['comApp','ngCookies']);
+angular.module('trainerApp',['comApp','ngCookies','timer']);

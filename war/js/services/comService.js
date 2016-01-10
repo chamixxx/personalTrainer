@@ -10,7 +10,10 @@ function commFnc($log, $http, $q) {
 		postTrainingPlan:postTrainingPlan,
 		getTrainings:getTrainings,
 		getSearchResults:getSearchResults,
-		getRSS:getRSS
+		getRSS:getRSS,
+		getDetails:getDetails,
+		updateExo:updateExo,
+		getStats:getStats
 	};
 
 	function getMessage() { 
@@ -121,6 +124,66 @@ function commFnc($log, $http, $q) {
         return deferred.promise;
 	};
 
+
+	function getDetails(name,type,parentKey) { 
+		var req = {
+	    		url: '/getDetails', 
+			    method: "GET",
+			    params: {
+			    	"name":name,
+			    	"type":type,
+			    	"parentKey":parentKey
+				}
+ 			}
+
+		var deferred = $q.defer();
+		$http(req).
+			success(function(data, status, headers, config) {
+			 	deferred.resolve(data)
+			}).
+			error(function(data, status, headers, config) {
+				deferred.reject(status);
+			});
+        return deferred.promise;
+	};
+
+	function updateExo(exo) {
+		var deferred = $q.defer();
+		var req = {
+ 				method: 'POST',
+ 				url: '/getDetails',
+ 				headers: {
+   					'Content-Type': 'application/json'
+ 				},
+ 				data : JSON.stringify(exo)
+		}
+
+		$http(req).success(function(data, status, headers, config) {
+			 	deferred.resolve(data);
+			}).
+			error(function(data, status, headers, config) {
+				deferred.reject(status);
+			});
+		return deferred.promise;
+	};
+
+	function getStats(userId) { 
+		var req = {
+	    		url: '/getStats', 
+			    method: "GET",
+			    params: {
+			    	"userId":userId
+				}
+ 			}
+		var deferred = $q.defer();
+		$http(req).success(function(data, status, headers, config) {
+			 	deferred.resolve(data)
+			}).
+			error(function(data, status, headers, config) {
+				deferred.reject(status);
+			});
+        return deferred.promise;
+	};
 	
 	return fncContainer;
 }

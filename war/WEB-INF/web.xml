@@ -83,5 +83,25 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
 		<servlet-name>GetRSSServelet</servlet-name>
 		<url-pattern>/getRSS</url-pattern>
 	</servlet-mapping>
+	
+	 <servlet>
+	<servlet-name>GetDetailsServlet</servlet-name>
+		<servlet-class>root.GetDetailsServlet</servlet-class>
+	</servlet>
+	
+	<servlet-mapping>
+		<servlet-name>GetDetailsServlet</servlet-name>
+		<url-pattern>/getDetails</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+	<servlet-name>GetStatsServlet</servlet-name>
+		<servlet-class>root.GetStatsServlet</servlet-class>
+	</servlet>
+	
+	<servlet-mapping>
+		<servlet-name>GetStatsServlet</servlet-name>
+		<url-pattern>/getStats</url-pattern>
+	</servlet-mapping>
   
 </web-app>
